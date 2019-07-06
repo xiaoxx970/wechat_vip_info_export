@@ -1,4 +1,6 @@
 # 微信公众号会员信息导出
+[点这里安装](https://github.com/xiaoxx970/wechat_vip_info_export/raw/master/Wechat_offical_account_VIP_info_export.user.js)（需要浏览器已经安装Tampermonkey）
+
 脚本功能：导出微信公众号后台的所有会员卡信息，格式为csv，可以直接复制进Excel里面，方便其他平台导入。
 
 在微信公众号的`卡劵功能->会员卡-> 会员管理`界面使用，脚本会自动从第一个会员详情点开，把会员信息保存到浏览器的localstorage后返回，继续点开下一个。
