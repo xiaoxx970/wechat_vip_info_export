@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         微信公众号会员信息导出[Wechat_offical_account_VIP_info_export]
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/xiaoxx970/wechat_vip_info_export
 // @version      0.8
 // @description  导出微信公众号的所有会员卡信息，保存为csv格式
 // @author       Xiaoxx
