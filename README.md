@@ -1,0 +1,2 @@
+# wechat_vip_info_export
+导出微信公众号的所有会员卡信息，保存为csv格式
