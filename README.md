@@ -1,6 +1,8 @@
 # 微信公众号会员信息导出
 [点这里安装](https://github.com/xiaoxx970/wechat_vip_info_export/raw/master/Wechat_offical_account_VIP_info_export.user.js)（需要浏览器已经安装Tampermonkey）
 
+> Tampermonkey，中文名叫油猴，是一个装在浏览器上的插件，一般浏览器如Edge、Chrome、Firefox都可以安装，官网在这：[Tampermonkey官网](https://www.tampermonkey.net/?ext=dhdg&locale=zh)，安装后打开：[脚本页面](https://github.com/xiaoxx970/wechat_vip_info_export/raw/master/Wechat_offical_account_VIP_info_export.user.js)，点击`Install this script`就可以安装我的脚本，接下来打开会员详情页就可以开始自动运作
+
 脚本功能：导出微信公众号后台的所有会员卡信息，格式为csv，可以直接复制进Excel里面，方便其他平台导入。
 
 在微信公众号的`卡劵功能->会员卡-> 会员管理`界面使用，脚本会自动从第一个会员详情点开，把会员信息保存到浏览器的localstorage后返回，继续点开下一个。
