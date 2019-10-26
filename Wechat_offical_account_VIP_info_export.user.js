@@ -46,6 +46,55 @@
         var csv = info_es.join(",")
         return csv
     }
+    function SaveAs(fileName, csvData) {
+        var bw = browser();
+        if(!bw['edge'] || !bw['ie']) {
+            var alink = document.createElement("a");
+            alink.id = "linkDwnldLink";
+            alink.href = getDownloadUrl(csvData);
+            document.body.appendChild(alink);
+            var linkDom = document.getElementById('linkDwnldLink');
+            linkDom.setAttribute('download', fileName);
+            linkDom.click();
+            document.body.removeChild(linkDom);
+        }
+        else if(bw['ie'] >= 10 || bw['edge'] == 'edge') {
+            var _utf = "\uFEFF";
+            var _csvData = new Blob([_utf + csvData], {
+                type: 'text/csv'
+            });
+            navigator.msSaveBlob(_csvData, fileName);
+        }
+        else {
+            var oWin = window.top.open("about:blank", "_blank");
+            oWin.document.write('sep=,\r\n' + csvData);
+            oWin.document.close();
+            oWin.document.execCommand('SaveAs', true, fileName);
+            oWin.close();
+        }
+    }
+    function browser() {
+        var Sys = {};
+        var ua = navigator.userAgent.toLowerCase();
+        var s;
+        (s = ua.indexOf('edge') !== - 1 ? Sys.edge = 'edge' : ua.match(/rv:([\d.]+)\) like gecko/)) ? Sys.ie = s[1]:
+        (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] :
+        (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] :
+        (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] :
+        (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] :
+        (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0;
+        return Sys;
+    }
+    function getDownloadUrl(csvData) {
+        var _utf = "\uFEFF"; // 为了使Excel以utf-8的编码模式，同时也是解决中文乱码的问题
+        if (window.Blob && window.URL && window.URL.createObjectURL) {
+            var csvData = new Blob([_utf + csvData], {
+                type: 'text/csv'
+            });
+            return URL.createObjectURL(csvData);
+        }
+        // return 'data:attachment/csv;charset=utf-8,' + _utf + encodeURIComponent(csvData);
+    }
     window.addEventListener('load', function() {
         var step = parseInt(getCookie("step"))
         if(window.location.search.has("action=user_list")){//分支1：在会员列表页
@@ -63,14 +112,22 @@
                     alert("导出完成，下载csv文件")
                     var csv = localStorage.getItem("csv")
                     csv = "会员,地区,姓名,手机,生日,状态,是否关注,标签,会员号,积分\n"+csv
-                    window.open("data:text/csv;charset=utf-8,"+csv)
+                    SaveAs("vip.csv", csv)
                 }
                 console.log("next page")
                 return//这个return必须要否则下一页的点击速度赶不上去详情页的速度
             }
             console.log("step:"+step)
             setCookie("back_url",window.location.href)
-            window.location.href=document.getElementsByClassName("tbody")[0].getElementsByTagName("a")[step*2-1].href//去往详情页
+            try {
+                window.location.href=document.getElementsByClassName("tbody")[0].getElementsByTagName("a")[step*2-1].href//去往详情页
+            }
+            catch(err){
+                alert("导出完成，下载csv文件")
+                var csv = localStorage.getItem("csv")
+                csv = "会员,地区,姓名,手机,生日,状态,是否关注,标签,会员号,积分\n"+csv
+                SaveAs("vip.csv", csv)
+            }
             return
         }
         if(window.location.search.has("action=user_detail")){//分支2：在会员详情页
