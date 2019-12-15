@@ -36,7 +36,7 @@
 
    下载后你得到的是一个crx格式的文件，重命名文件修改后缀，把`.crx`改成`.zip`
 
-   ![image-20191215150212447](md-img/image-20191215150212447.png)=>![image-20191215150325561](https://xiaoxx.oss-cn-beijing.aliyuncs.com/md-img/image-20191215150325561.png)
+   ![](https://xiaoxx.oss-cn-beijing.aliyuncs.com/md-img/image-20191215150212447.png)=>![image-20191215150325561](https://xiaoxx.oss-cn-beijing.aliyuncs.com/md-img/image-20191215150325561.png)
 
    解压zip文件：点解压到"extension_xxx\”
 
