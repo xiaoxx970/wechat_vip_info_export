@@ -1,5 +1,8 @@
 # 微信公众号会员信息导出
+
 推荐使用谷歌浏览器[Chrome](https://www.google.cn/intl/zh-CN/chrome/)安装插件[Tampermonkey](https://www.tampermonkey.net/?ext=dhdg&locale=zh)使用，其他浏览器没测试过
+
+**加载图片缓慢？访问国内站点查看教程：https://mcyo.pw/wechat-vip-how-to/**
 
 ## 功能
 
