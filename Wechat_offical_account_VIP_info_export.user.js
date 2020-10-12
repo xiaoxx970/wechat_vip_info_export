@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         微信公众号会员信息导出[Wechat_offical_account_VIP_info_export]
 // @namespace    https://github.com/xiaoxx970/wechat_vip_info_export
-// @version      0.9
+// @version      1.0
 // @description  导出微信公众号的所有会员卡信息，保存为csv格式
 // @author       Xiaoxx
 // @match        https://mp.weixin.qq.com/merchant/membercardmgr?*
@@ -99,7 +99,7 @@
             console.log("step:" + step)
             setCookie("back_url", window.location.href)
             try {
-                window.location.href = document.getElementsByClassName("tbody")[0].getElementsByTagName("a")[step * 2 - 1].href//去往详情页
+                window.location.href = document.getElementsByClassName("tbody")[0].getElementsByTagName("tr")[step-1].getElementsByClassName("td_panel")[4].getElementsByTagName("a")[0].href //去往详情页
             }
             catch (err) {
                 alert("导出完成，下载csv文件")
