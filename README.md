@@ -87,6 +87,8 @@
 
    如果脚本执行完最后一页的最后一个用户，就会出现提示说导出完成，可以开始下载
 
+   > V1.1 更新: 代码指定了N=10，每10页会下载一次当前已导出的会员，以保证意外不会丢失数据
+
    ![image-20191215153051694](https://xiaoxx.oss-cn-beijing.aliyuncs.com/md-img/image-20191215153051694.png)
 
    下载下来的`vip.csv`文件可以通过Excel打开，完事。
@@ -142,6 +144,8 @@
   }
   localStorage.removeItem("csv")
   clearCookie("step")
+  clearCookie("page")
+  clearCookie("file")
   ```
 
 - 在会员页面打开插件后不会马上开始运行脚本，要刷新一下才可以
